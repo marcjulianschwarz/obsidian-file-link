@@ -92,9 +92,6 @@ class FilesLinkModal extends Modal {
 		let urlComponents = url.split("/")
 		let title = urlComponents.pop()
 
-		console.log("HALLLLO");
-		console.log(this.plugin.settings.showFileEnding);
-
 		if (!this.plugin.settings.showFileEnding){
 			title = title.split(".")[0];
 			console.log(title);
@@ -139,6 +136,7 @@ class FileLinkSettingTab extends PluginSettingTab {
 			.setName('Show file extension')
 			.setDesc('Will show file endings when activated.')
 			.addToggle(toggle => toggle
+				.setValue(this.plugin.settings.showFileEnding)
 				.onChange(async () => {
 					console.log(toggle.getValue());
 					this.plugin.settings.showFileEnding = toggle.getValue();
