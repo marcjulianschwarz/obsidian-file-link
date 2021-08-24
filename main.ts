@@ -3,7 +3,7 @@ import { App, Modal, Notice, Plugin, PluginSettingTab, Setting, TFile } from 'ob
 export default class FilesLink extends Plugin {
 
 	async onload() {
-		console.log('loading plugin');
+		console.log('loading plugin file-link');
 
 		this.addCommand({
 			id: 'add-file-link',
