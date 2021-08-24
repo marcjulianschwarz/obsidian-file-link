@@ -1,0 +1,10 @@
+{
+	"id": "file-link",
+	"name": "File Link",
+	"version": "1.0.1",
+	"minAppVersion": "0.9.12",
+	"description": "A plugin to add links to files and folders.",
+	"author": "Marc Julian Schwarz",
+	"authorUrl": "https://marc-julian.de",
+	"isDesktopOnly": false
+}
