@@ -1,6 +1,6 @@
 # File Link plugin
 
-With this Obsidian plugin you can easily add links to files in your notes.
+With this Obsidian plugin you can easily add file links to your notes.
 
 ## How to use it:
 1. Open command palette with "cmd + p"
