@@ -2,6 +2,14 @@
 
 With this Obsidian plugin you can easily add links to files in your notes.
 
+## How to use it:
+1. Open command palette with "cmd + p"
+2. Search for the command "Add file link"
+3. CLick "Select files"
+4. Now choose your files
+5. Then press "Add file link"
+
+Your links will now be inserted at your cursor. You can adjust list style and file extension visibility in the plugin settings. 
 
 ## Demo
 
