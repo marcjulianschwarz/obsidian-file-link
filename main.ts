@@ -1,4 +1,4 @@
-import { App, Modal, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Modal, Plugin, PluginSettingTab, Setting,  Notice, MarkdownView } from 'obsidian';
 
 interface FileLinkSettings {
 	linkPrefix: string;
@@ -76,12 +76,12 @@ class FilesLinkModal extends Modal {
 
 			this.addAtCursor(linkString);
             this.close()
-            //new Notice("Added File Link")
+            new Notice("Added File Link")
 		});
 	}
 
 	addAtCursor(s: string){
-		let mdView = this.app.workspace.activeLeaf.view;
+		let mdView = this.app.workspace.getActiveViewOfType(MarkdownView);
         let doc = mdView.editor;
 		var currentLine = doc.getCursor();
         doc.replaceRange(s, currentLine, currentLine);
