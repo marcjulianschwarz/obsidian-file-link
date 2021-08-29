@@ -3,11 +3,13 @@ import { App, Modal, Plugin, PluginSettingTab, Setting,  Notice, MarkdownView } 
 interface FileLinkSettings {
 	linkPrefix: string;
 	showFileEnding: boolean;
+	linkFolder: boolean;
 }
 
 const DEFAULT_SETTINGS: FileLinkSettings = {
 	linkPrefix: '', 
-	showFileEnding: false
+	showFileEnding: false,
+	linkFolder: false
 }
 
 export default class FileLink extends Plugin {
@@ -70,13 +72,20 @@ class FilesLinkModal extends Modal {
 
 			let linkString = "";
 
-            [...contentEl.querySelector("input").files].forEach(file => {
-				linkString = linkString + this.buildLinkFromFile(file);
-            });
+			let files = contentEl.querySelector("input").files;
+
+            [...files].forEach(file => {
+			
+				if (files.length != 1) {
+					linkString = linkString + this.buildLinkFromFile(file, true);
+				}else{
+					linkString = linkString + this.buildLinkFromFile(file, false);
+				}
+			});
 
 			this.addAtCursor(linkString);
-            this.close()
-            new Notice("Added File Link")
+            this.close();
+            new Notice("Added File Link");
 		});
 	}
 
@@ -87,18 +96,27 @@ class FilesLinkModal extends Modal {
         doc.replaceRange(s, currentLine, currentLine);
 	}
 
-	buildLinkFromFile(file: File){
-		let url: string = file.path
-		let urlComponents = url.split("/")
-		let title = urlComponents.pop()
+	buildLinkFromFile(file: File, prefix: boolean){
+		let url: string = file.path;
+		let urlComponents = url.split("/");
+		let title = urlComponents[urlComponents.length - 1];
+		let prefixString = "";
 
 		if (!this.plugin.settings.showFileEnding){
-			title = title.split(".")[0];
-			console.log(title);
+			let titleComponents = title.split(".");
+			titleComponents.pop();
+			title = titleComponents.join(".");
+		}
+		if (this.plugin.settings.linkFolder){
+			urlComponents.pop();
+			url = urlComponents.join("/").substr(1);
+		}
+		if (prefix){
+			prefixString = this.plugin.settings.linkPrefix;
 		}
 
-		url = urlComponents.join("/").substr(1);
-		return this.plugin.settings.linkPrefix + " [" + title + "](file:///" + encodeURIComponent(url) + ")\n"
+
+		return prefixString + " [" + title + "](file:///" + encodeURIComponent(url) + ")\n";
 	}
 
 
@@ -130,7 +148,8 @@ class FileLinkSettingTab extends PluginSettingTab {
 				.onChange(async (value) => {
 					this.plugin.settings.linkPrefix = value;
 					await this.plugin.saveSettings();
-				}));
+				})
+			);
 		
 		new Setting(containerEl)
 			.setName('Show file extension')
@@ -138,10 +157,20 @@ class FileLinkSettingTab extends PluginSettingTab {
 			.addToggle(toggle => toggle
 				.setValue(this.plugin.settings.showFileEnding)
 				.onChange(async () => {
-					console.log(toggle.getValue());
 					this.plugin.settings.showFileEnding = toggle.getValue();
 					await this.plugin.saveSettings();
 				})
-			)
+			);
+		
+		new Setting(containerEl)
+			.setName('Link folder instead of file')
+			.setDesc('Link will open the folder where the file is located instead of opening the file itself.')
+			.addToggle(toggle => toggle
+				.setValue(this.plugin.settings.linkFolder)
+				.onChange(async () => {
+					this.plugin.settings.linkFolder = toggle.getValue();
+					await this.plugin.saveSettings();
+				})
+			);
 	}
 }
