@@ -1,6 +1,12 @@
 # File Link plugin
 
-With this Obsidian plugin you can easily add file links to your notes.
+With this Obsidian plugin you can easily add file links to your notes. It features an interface to select files right from within Obsidian. No need to open a new Finder/File Explorer window to manually drag and drop files to your note.
+
+Other features and settings to improve file links:
+- custom prefix shown before every file link when adding multiple files
+- toggle visibility of file endings
+- decide if the file link should open the file or the folder where the file is located in
+
 
 ## How to use it:
 1. Open command palette with "cmd + p"
@@ -8,8 +14,6 @@ With this Obsidian plugin you can easily add file links to your notes.
 3. CLick "Select files"
 4. Now choose your files
 5. Then press "Add file link"
-
-Your links will now be inserted at your cursor. You can adjust list style and file extension visibility in the plugin settings. 
 
 ## Demo
 
@@ -23,4 +27,12 @@ If you add multiple file links you can specify the characters shown before every
 ### 2. File extension
 When activated, all file extensions will be shown.
 
-![Settings File Link](https://user-images.githubusercontent.com/67844154/131221810-43533824-b8ed-4806-a544-ef0ed5f108a4.png)
+### 3. Link folder instead of file
+When activated, clicking on the link will not open the file. Instead the folder where the file is located in will be opened.
+
+### Settings image
+![Settings](https://user-images.githubusercontent.com/67844154/131246371-68049aa6-34a5-421c-b478-513427525700.png)
+
+
+### Questions?
+Write me a mail at <a href="https://www.marc-julian.de">marc-julian.de</a>.
