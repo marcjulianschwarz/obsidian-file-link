@@ -1,10 +1,10 @@
 {
 	"id": "obsidian-file-link",
 	"name": "File Link",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "0.9.12",
-	"description": "A plugin to add file links to notes.",
+	"description": "A plugin to add better file links to notes.",
 	"author": "Marc Julian Schwarz",
 	"authorUrl": "https://www.marc-julian.de",
-	"isDesktopOnly": false
+	"isDesktopOnly": true
 }

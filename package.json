@@ -1,7 +1,7 @@
 {
   "name": "file-link",
   "version": "0.12.0",
-  "description": "A plugin to add links to files and folders.",
+  "description": "A plugin to add better file links to notes.",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
@@ -21,8 +21,6 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.10",
-    "node-html-parser": "^4.1.3",
     "https": "^1.0.0"
   }
 }
