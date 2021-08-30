@@ -72,7 +72,7 @@ class FilesLinkModal extends Modal {
 
 			let linkString = "";
 
-			let files = contentEl.querySelector("input").files;
+			let files = Array.from(contentEl.querySelector("input").files);
 
             [...files].forEach(file => {
 			
