@@ -7,7 +7,7 @@ Other features and settings to improve file links:
 - toggle visibility of file endings
 - decide if the file link should open the file or the folder where the file is located in
 
-This has only been tested on macOS and will only work on macOS. Other OS support will be available in future releases.
+This plugin has only been tested on macOS and will only work on macOS. Other OS support will be available in future releases.
 
 
 ## How to use it:
