@@ -27,16 +27,14 @@ export default class FileLink extends Plugin {
 			id: 'add-file-link',
 			name: 'Add File Link',
 
-			checkCallback: (checking: boolean) => {
-				let leaf = this.app.workspace.activeLeaf;
-				if (leaf) {
-					if (!checking) {
-						new FilesLinkModal(this.app, this).open();
-					}
-					return true;
+			editorCheckCallback: (checking: boolean) => {
+				if (!checking) {
+					new FilesLinkModal(this.app, this).open()
+				}else{
+					return true
 				}
-				return false;
 			}
+
 		});
 	}
 
@@ -65,14 +63,15 @@ class FilesLinkModal extends Modal {
 
 	onOpen() {
 		let {contentEl} = this;
-		let html = '<h3 style="margin-top: 0px;">Select files:</p><input type="file" multiple /> <br><br><button>Add File Link</button>';
-		contentEl.innerHTML = html;
-
-		contentEl.querySelector("button").addEventListener("click", () => {
+		contentEl.createEl("h3", {text: "Select files:"});
+		let input = contentEl.createEl("input", {type: "file", attr: {multiple: ""}});
+		let button = contentEl.createEl("button", {text: "Add file link"});
+		
+		button.addEventListener("click", () => {
 
 			let linkString = "";
 
-			let files = Array.from(contentEl.querySelector("input").files);
+			let files = Array.from(input.files);
 
             [...files].forEach(file => {
 			
