@@ -27,12 +27,8 @@ export default class FileLink extends Plugin {
 			id: 'add-file-link',
 			name: 'Add File Link',
 
-			editorCheckCallback: (checking: boolean) => {
-				if (!checking) {
-					new FilesLinkModal(this.app, this).open()
-				}else{
-					return true
-				}
+			editorCallback: () => {
+				new FilesLinkModal(this.app, this).open()
 			}
 
 		});
