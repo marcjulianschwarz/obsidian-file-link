@@ -1,7 +1,7 @@
 {
-	"id": "obsidian-file-link",
+	"id": "better-file-link",
 	"name": "Better File Link",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "0.9.12",
 	"description": "A plugin to add better external file links to notes.",
 	"author": "Marc Julian Schwarz",

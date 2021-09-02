@@ -1,5 +1,5 @@
 {
-  "name": "file-link",
+  "name": "obsidian-file-link",
   "version": "0.12.0",
   "description": "A plugin to add better external file links to notes.",
   "main": "main.js",
