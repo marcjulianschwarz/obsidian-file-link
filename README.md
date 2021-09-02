@@ -1,4 +1,4 @@
-# File Link plugin
+# Better File Links
 
 With this Obsidian plugin you can easily add file links to your notes. It features an interface to select files right from within Obsidian. No need to open a new Finder/File Explorer window to manually drag and drop files to your note.
 
