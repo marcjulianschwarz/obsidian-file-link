@@ -28,7 +28,7 @@ export default class FileLink extends Plugin {
 			name: 'Add File Link',
 
 			editorCallback: () => {
-				new FilesLinkModal(this.app, this).open()
+				new FileLinkModal(this.app, this).open()
 			}
 
 		});
@@ -48,7 +48,7 @@ export default class FileLink extends Plugin {
 }
 
 
-class FilesLinkModal extends Modal {
+class FileLinkModal extends Modal {
 
 	plugin: FileLink;
 
@@ -132,7 +132,7 @@ class FileLinkSettingTab extends PluginSettingTab {
 	display(): void {
 		let {containerEl} = this;
 		containerEl.empty();
-		containerEl.createEl('h2', {text: 'Settings for File Link'});
+		containerEl.createEl('h2', {text: 'Better File Link Settings'});
 
 		new Setting(containerEl)
 			.setName('List style for multiple files')
