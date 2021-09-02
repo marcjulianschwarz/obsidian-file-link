@@ -1,7 +1,7 @@
 {
   "name": "file-link",
   "version": "0.12.0",
-  "description": "A plugin to add better file links to notes.",
+  "description": "A plugin to add better external file links to notes.",
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
