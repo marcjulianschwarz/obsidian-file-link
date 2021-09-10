@@ -12,6 +12,8 @@ const DEFAULT_SETTINGS: FileLinkSettings = {
 	linkFolder: false
 }
 
+const SUPPORTED_EMBED_FILE_TYPES = ["md", "png", "jpg", "jpeg", "gif", "bmp", "svg", "mp3", "webm", "wav", "m4a", "ogg", "3gp", "flac", "mp4", "webm", "ogv", "pdf"];
+
 export default class FileLink extends Plugin {
 
 	settings: FileLinkSettings;
@@ -75,12 +77,9 @@ class FileLinkModal extends Modal {
 			let embedFile = checkbox.checked;
 			let files = Array.from(input.files);
 
-
 			if (embedFile){
 				files.forEach((file: File) => {
-					//@ts-ignore
-					this.copyFile(file.path, this.app.vault.adapter.basePath + "/" + this.app.vault.config.attachmentFolderPath);
-					this.addAtCursor(this.createEmbedLink(file));
+					this.embedFile(file);
 				});
 			}else{
 				let linkString = "";
@@ -97,6 +96,18 @@ class FileLinkModal extends Modal {
             this.close();
             new Notice("Added File Link");
 		});
+	}
+
+
+	embedFile(file){
+		let fileType = file.name.split(".").pop();
+		if (SUPPORTED_EMBED_FILE_TYPES.contains(fileType)){
+			//@ts-ignore
+			this.copyFile(file.path, this.app.vault.adapter.basePath + "/" + this.app.vault.config.attachmentFolderPath);
+			this.addAtCursor(this.createEmbedLink(file));
+		}else{
+			new Notice("This file type (" + fileType + ") is not supported for embed.")
+		}
 	}
 
 	createEmbedLink(file){
