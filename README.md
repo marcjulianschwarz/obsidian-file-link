@@ -6,6 +6,14 @@ Other features and settings to improve file links:
 - custom prefix shown before every file link when adding multiple files
 - toggle visibility of file endings
 - decide if the file link should open the file or the folder where the file is located in
+- embed file in note instead of only linking it
+
+These file types are supported for embedding:
+- Markdown: `md`
+- Images: `png`, `jpg`, `jpeg`, `gif`, `bmp`, `svg`
+- Audio: `mp3`, `webm`, `wav`, `m4a`, `ogg`, `3gp`, `flac`
+- Video: `mp4`, `webm`, `ogv`
+- PDF: `pdf`
 
 This plugin has only been tested on macOS and will only work on macOS. Other OS support will be available in future releases.
 
@@ -15,7 +23,8 @@ This plugin has only been tested on macOS and will only work on macOS. Other OS 
 2. Search for the command "Add file link"
 3. CLick "Select files"
 4. Now choose your files
-5. Then press "Add file link"
+5. Decide whether you want to embed the file by selecting the checkbox 
+6. Then press "Add file link"
 
 ## Demo
 
@@ -38,3 +47,28 @@ When activated, clicking on the link will not open the file. Instead the folder 
 
 ### Questions?
 Write me a mail at <a href="https://www.marc-julian.de">marc-julian.de</a>.
+
+Do you like the plugin?<br><br>
+<a href="https://www.buymeacoffee.com/marcjulian" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+
+## Future versions will include:
+See <a href="https://github.com/marcjulianschwarz/obsidian-file-link/issues">issues for Better File Link</a>.
+
+## Versions
+The numbers in "[]" are the issue numbers associated with the fix or feature.
+
+*1.0.0*: 
+- Initital release.
+
+*1.0.1*:
+- Bug fixes
+- New setting: Link folders instead of files
+
+*1.0.2*:
+- Name and description changes
+
+*1.0.3*:
+- Fixed plugin id mismatch
+
+*1.1.0*:
+- You can now embed files instead of linking them
