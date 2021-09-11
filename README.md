@@ -15,8 +15,6 @@ These file types are supported for embedding:
 - Video: `mp4`, `webm`, `ogv`
 - PDF: `pdf`
 
-This plugin has only been tested on macOS and will only work on macOS. Other OS support will be available in future releases.
-
 
 ## How to use it:
 1. Open command palette with "cmd + p"
