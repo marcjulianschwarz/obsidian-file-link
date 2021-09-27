@@ -70,3 +70,4 @@ The numbers in "[]" are the issue numbers associated with the fix or feature.
 
 *1.1.0*:
 - You can now embed files instead of linking them
+- [#3] Select options right in pop-up
