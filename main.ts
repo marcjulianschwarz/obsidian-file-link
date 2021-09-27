@@ -61,12 +61,19 @@ class FileLinkModal extends Modal {
 
 	onOpen() {
 		let {contentEl} = this;
-		contentEl.createEl("h3", {text: "Select files:"});
+		contentEl.createEl("h2", {text: "Select files:"});
 		let input = contentEl.createEl("input", {type: "file", attr: {multiple: ""}});
 		contentEl.createEl("br");
 		contentEl.createEl("br");
-		contentEl.createEl("label", {text: "Embed file?", attr: {for: "embed"}});
-		let checkbox = contentEl.createEl("input", {type: "checkbox", attr: {id: "embed"}});
+
+		let checkboxEmbed = contentEl.createEl("input", {type: "checkbox", attr: {id: "embed"}});
+		contentEl.createEl("label", {text: "Embed file", attr: {for: "embed"}});
+		contentEl.createEl("br")
+		let checkboxFileFolder = contentEl.createEl("input", {type: "checkbox", attr: {id: "file-folder"}});
+		contentEl.createEl("label", {text: "Link folder", attr: {for: "file-folder"}});
+		contentEl.createEl("br")
+		let checkboxFileEnding = contentEl.createEl("input", {type: "checkbox", attr: {id: "file-ending"}});
+		contentEl.createEl("label", {text: "Show file extension", attr: {for: "file-ending"}});
 		contentEl.createEl("br");
 		contentEl.createEl("br");
 		contentEl.createEl("br");
@@ -74,9 +81,11 @@ class FileLinkModal extends Modal {
 
 		button.addEventListener("click", () => {
 
-			let embedFile = checkbox.checked;
+			let embedFile = checkboxEmbed.checked;
 			let files = Array.from(input.files);
-
+			this.plugin.settings.linkFolder = checkboxFileFolder.checked
+			this.plugin.settings.showFileEnding = checkboxFileEnding.checked
+	
 			if (embedFile){
 				files.forEach((file: File) => {
 					this.embedFile(file);
