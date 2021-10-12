@@ -111,8 +111,14 @@ class FileLinkModal extends Modal {
 	embedFile(file){
 		let fileType = file.name.split(".").pop();
 		if (SUPPORTED_EMBED_FILE_TYPES.contains(fileType)){
+
 			//@ts-ignore
-			this.copyFile(file.path, this.app.vault.adapter.basePath + "/" + this.app.vault.config.attachmentFolderPath);
+			let attachementFolder = this.app.vault.config.attachmentFolderPath;
+			if (attachementFolder == undefined){
+				attachementFolder = "";
+			}
+			//@ts-ignore
+			this.copyFile(file.path, this.app.vault.adapter.basePath + "/" + attachementFolder);
 			this.addAtCursor(this.createEmbedLink(file));
 		}else{
 			new Notice("This file type (" + fileType + ") is not supported for embed.")
@@ -122,6 +128,11 @@ class FileLinkModal extends Modal {
 	createEmbedLink(file){
 		let url: string = file.path;
 		let urlComponents = url.split("/");
+		
+		if(url.contains("\\")){
+			urlComponents = url.split("\\");
+		}
+
 		let title = urlComponents[urlComponents.length - 1];
 		return "![[" + title + "]]";
 	}
@@ -150,7 +161,12 @@ class FileLinkModal extends Modal {
 	buildLinkFromFile(file: File, prefix: boolean){
 		//@ts-ignore
 		let url: string = file.path;
+		console.log(url);
 		let urlComponents = url.split("/");
+		if (url.contains("\\")){
+			urlComponents = url.split("\\");
+		}
+		console.log(urlComponents);
 		let title = urlComponents[urlComponents.length - 1];
 		let prefixString = "";
 
@@ -161,7 +177,7 @@ class FileLinkModal extends Modal {
 		}
 		if (this.plugin.settings.linkFolder){
 			urlComponents.pop();
-			url = urlComponents.join("/").substr(1);
+			url = urlComponents.join("/");
 		}
 		if (prefix){
 			prefixString = this.plugin.settings.linkPrefix;
