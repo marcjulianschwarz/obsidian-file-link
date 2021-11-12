@@ -19,7 +19,7 @@ These file types are supported for embedding:
 ## How to use it:
 1. Open command palette with "cmd + p"
 2. Search for the command "Add file link"
-3. CLick "Select files"
+3. Click "Select files"
 4. Now choose your files
 5. Decide whether you want to embed the file by selecting the checkbox 
 6. Then press "Add file link"
