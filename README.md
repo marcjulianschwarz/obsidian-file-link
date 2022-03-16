@@ -1,5 +1,6 @@
 <p align="center">
-  <img width="500" alt="link_transparent" src="https://user-images.githubusercontent.com/67844154/158649170-7135e7a0-157c-4d4e-b2dd-402b581de41e.png">
+  <img width="500" alt="link_peach_transparent" src="https://user-images.githubusercontent.com/67844154/158657066-47b6b0fb-439c-4973-82c7-9768ee472344.png">
+
 </p>
 
 # Better File Link
