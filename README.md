@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="500" alt="link_transparent" src="https://user-images.githubusercontent.com/67844154/158649170-7135e7a0-157c-4d4e-b2dd-402b581de41e.png">
+</p>
+
 # Better File Link
 
 With this Obsidian plugin you can easily add file links to your notes. It features an interface to select files right from within Obsidian. No need to open a new Finder/File Explorer window to manually drag and drop files to your note.
@@ -43,11 +47,8 @@ When activated, clicking on the link will not open the file. Instead the folder 
 ![Settings](https://user-images.githubusercontent.com/67844154/131246371-68049aa6-34a5-421c-b478-513427525700.png)
 
 
-### Questions?
-Write me a mail at <a href="https://www.marc-julian.de">marc-julian.de</a>.
-
-Do you like the plugin?<br><br>
-<a href="https://www.buymeacoffee.com/marcjulian" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+## Contributions
+Icon design: <a href="https://www.olli-graphics.de">Olli Graphics</a>
 
 ## Future versions will include:
 See <a href="https://github.com/marcjulianschwarz/obsidian-file-link/issues">issues for Better File Link</a>.
