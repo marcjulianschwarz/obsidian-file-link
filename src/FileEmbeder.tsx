@@ -1,5 +1,5 @@
 import { SUPPORTED_EMBED_FILE_TYPES } from "./constants";
-import { Notice, TFile } from "obsidian";
+import { Notice } from "obsidian";
 import fs from "fs";
 import path from "path";
 import { FileLinkSettings } from "./interfaces";
@@ -86,9 +86,13 @@ export class FileEmbeder {
       prefixString = this.settings.linkPrefix;
     }
 
+    if (this.settings.shortLinks) {
+      return prefixString + "[" + filename + "](<file:///" + path + ">)\n";
+    }
+
     return (
       prefixString +
-      " [" +
+      "[" +
       filename +
       "](file:///" +
       encodeURIComponent(path) +

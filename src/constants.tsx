@@ -4,6 +4,8 @@ export const DEFAULT_SETTINGS: FileLinkSettings = {
   linkPrefix: "",
   showFileEnding: false,
   linkFolder: false,
+  embedFile: false,
+  shortLinks: false,
 };
 
 export const SUPPORTED_EMBED_FILE_TYPES = [

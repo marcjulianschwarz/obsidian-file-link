@@ -1,4 +1,4 @@
-import { Modal, App, Notice, MarkdownView, TFile } from "obsidian";
+import { Modal, App, Notice, MarkdownView } from "obsidian";
 import FileLink from "../main";
 import { FileEmbeder } from "./FileEmbeder";
 
@@ -39,13 +39,32 @@ export class FileLinkModal extends Modal {
       type: "checkbox",
       attr: { id: "file-ending" },
     });
+
     contentEl.createEl("label", {
       text: "Show file extension",
       attr: { for: "file-ending" },
     });
+
+    contentEl.createEl("br");
+    let checkboxShortLink = contentEl.createEl("input", {
+      type: "checkbox",
+      attr: { id: "short-link" },
+    });
+
+    contentEl.createEl("label", {
+      text: "Use short links",
+      attr: { for: "short-link" },
+    });
+
     contentEl.createEl("br");
     contentEl.createEl("br");
     contentEl.createEl("br");
+
+    checkboxFileEnding.checked = this.plugin.settings.showFileEnding;
+    checkboxFileFolder.checked = this.plugin.settings.linkFolder;
+    checkboxEmbed.checked = this.plugin.settings.embedFile;
+    checkboxShortLink.checked = this.plugin.settings.shortLinks;
+
     let button = contentEl.createEl("button", { text: "Add file link" });
 
     button.addEventListener("click", () => {
@@ -53,8 +72,11 @@ export class FileLinkModal extends Modal {
       let fileList = input.files;
       if (fileList) {
         let files = Array.from(fileList);
+
         this.plugin.settings.linkFolder = checkboxFileFolder.checked;
         this.plugin.settings.showFileEnding = checkboxFileEnding.checked;
+        this.plugin.settings.embedFile = embedFile;
+        this.plugin.settings.shortLinks = checkboxShortLink.checked;
 
         //@ts-ignore
         let attachementFolder = this.app.vault.config.attachmentFolderPath;
