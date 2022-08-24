@@ -76,3 +76,9 @@ The numbers in "[]" are the issue numbers associated with the fix or feature.
 
 *1.1.1*:
 - [#1] Fixed bugs with windows paths
+
+*1.1.2*:
+- Security fix (moment.js)
+
+*1.1.3*:
+- [#10] Add short links option to settings
