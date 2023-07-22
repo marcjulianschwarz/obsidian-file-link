@@ -7,7 +7,6 @@ import { FileLinkSettings } from "./interfaces";
 export class FileEmbeder {
   attachementFolder: string;
   basePath: string;
-
   settings: FileLinkSettings;
 
   constructor(
@@ -68,32 +67,33 @@ export class FileEmbeder {
     return { path, pathComponents, filename };
   }
 
-  linkFor(file: File, prefix: boolean) {
-    let { path, pathComponents, filename } = this.pathInfo(file);
+  linkFor(file: File, printPrefix: boolean) {
+    let { path, pathComponents, filename: linkName } = this.pathInfo(file);
     let prefixString = "";
 
     if (!this.settings.showFileEnding) {
-      let filenameComponents = filename.split(".");
+      let filenameComponents = linkName.split(".");
       filenameComponents.pop();
-      filename = filenameComponents.join(".");
+      linkName = filenameComponents.join(".");
     }
 
     if (this.settings.linkFolder) {
-      pathComponents.pop();
+      linkName = pathComponents[pathComponents.length - 1]; // .peek()
       path = pathComponents.join("/");
     }
-    if (prefix) {
+
+    if (printPrefix) {
       prefixString = this.settings.linkPrefix;
     }
 
     if (this.settings.shortLinks) {
-      return prefixString + "[" + filename + "](<file:///" + path + ">)\n";
+      return prefixString + "[" + linkName + "](<file:///" + path + ">)\n";
     }
 
     return (
       prefixString +
       "[" +
-      filename +
+      linkName +
       "](file:///" +
       encodeURIComponent(path) +
       ")\n"
