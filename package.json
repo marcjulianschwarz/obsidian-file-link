@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "dev": "rollup --config rollup.config.js -w",
-    "build": "rollup --config rollup.config.js --environment BUILD:production"
+    "build": "rollup --config rollup.config.js --environment BUILD:production",
+    "devbuild": "rollup --config rollup.config.js --environment BUILD:production && cp main.js manifest.json data.json styles.css /Users/marcjulianschwarz/Mac/AHEAD\\ Vault/.obsidian/plugins/bfl/"
   },
   "keywords": [],
   "author": "",
@@ -15,7 +16,7 @@
     "@rollup/plugin-node-resolve": "^11.2.1",
     "@rollup/plugin-typescript": "^8.2.1",
     "@types/node": "^14.14.37",
-    "obsidian": "^0.14.6",
+    "obsidian": "^1.7.2",
     "rollup": "^2.32.1",
     "tslib": "^2.2.0",
     "typescript": "^4.2.4"

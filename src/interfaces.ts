@@ -3,5 +3,12 @@ export interface FileLinkSettings {
   showFileEnding: boolean;
   linkFolder: boolean;
   embedFile: boolean;
-  shortLinks: boolean;
+}
+
+export interface PathInfo {
+  fullPath: string;
+  dir: string;
+  filename: string;
+  name: string;
+  ext: string;
 }

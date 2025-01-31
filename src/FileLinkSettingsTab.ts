@@ -60,15 +60,5 @@ export class FileLinkSettingTab extends PluginSettingTab {
           await this.plugin.saveSettings();
         })
       );
-
-    new Setting(containerEl)
-      .setName("Use short links")
-      .setDesc("Use short links instead of long links.")
-      .addToggle((toggle) =>
-        toggle.setValue(this.plugin.settings.shortLinks).onChange(async () => {
-          this.plugin.settings.shortLinks = toggle.getValue();
-          await this.plugin.saveSettings();
-        })
-      );
   }
 }
