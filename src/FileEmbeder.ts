@@ -13,7 +13,6 @@ export class FileEmbeder {
 
   getEmbedMarkdownLink(filePath: string) {
     const { ext } = this.getPathInformation(filePath);
-    console.log(ext);
     if (!SUPPORTED_EMBED_FILE_TYPES.includes(ext)) {
       new Notice(
         `Files of this type are not supported for embedding in Obsidian.`
@@ -73,6 +72,7 @@ export class FileEmbeder {
     text: string,
     path: string
   ): string {
-    return `${prefix} [${text}](<file:///${path}>)\n`;
+    const space = prefix && prefix !== "!" ? " " : "";
+    return `${prefix}${space}[${text}](<file:///${path}>)\n`;
   }
 }
