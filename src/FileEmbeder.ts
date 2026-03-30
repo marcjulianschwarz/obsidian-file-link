@@ -15,7 +15,7 @@ export class FileEmbeder {
     const { ext } = this.getPathInformation(filePath);
     if (!SUPPORTED_EMBED_FILE_TYPES.includes(ext)) {
       new Notice(
-        `Files of this type are not supported for embedding in Obsidian.`
+        `Files of this type are not supported for embedding in Obsidian.`,
       );
     }
     return "!" + this.getMarkdownLink(filePath, false);
@@ -32,7 +32,7 @@ export class FileEmbeder {
       return destPath;
     } catch (err) {
       console.error("Copy failed:", err);
-      throw new Error(`File copy failed: ${err.message}`);
+      throw new Error(`File copy failed: ${(err as Error).message}`);
     }
   }
 
@@ -70,7 +70,7 @@ export class FileEmbeder {
   private formatMarkdownLink(
     prefix: string,
     text: string,
-    path: string
+    path: string,
   ): string {
     const space = prefix && prefix !== "!" ? " " : "";
     return `${prefix}${space}[${text}](<file:///${path}>)\n`;

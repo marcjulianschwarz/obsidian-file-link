@@ -1,10 +1,11 @@
 import { Modal, App, Notice, MarkdownView } from "obsidian";
+import { dialog } from "@electron/remote";
 import FileLink from "../main";
 import { FileEmbeder } from "./FileEmbeder";
 
 export class FileLinkModal extends Modal {
   plugin: FileLink;
-  selectedFilesDiv: HTMLDivElement;
+  selectedFilesDiv: HTMLDivElement = document.createElement("div");
   filePaths: string[] = [];
 
   constructor(app: App, plugin: FileLink) {
@@ -41,7 +42,7 @@ export class FileLinkModal extends Modal {
     const createCheckboxGroup = (
       id: string,
       label: string,
-      initialValue: boolean
+      initialValue: boolean,
     ) => {
       const wrapper = checkboxContainer.createEl("div", {
         cls: "bfl-checkbox-group",
@@ -70,19 +71,19 @@ export class FileLinkModal extends Modal {
     const checkboxEmbed = createCheckboxGroup(
       "embed",
       "Embed file",
-      this.plugin.settings.embedFile
+      this.plugin.settings.embedFile,
     );
 
     const checkboxFileFolder = createCheckboxGroup(
       "file-folder",
       "Link folder",
-      this.plugin.settings.linkFolder
+      this.plugin.settings.linkFolder,
     );
 
     const checkboxFileEnding = createCheckboxGroup(
       "file-ending",
       "Show file extension",
-      this.plugin.settings.showFileEnding
+      this.plugin.settings.showFileEnding,
     );
 
     const buttonContainer = mainContainer.createEl("div", {
@@ -98,10 +99,8 @@ export class FileLinkModal extends Modal {
     });
 
     fileButton.addEventListener("click", async () => {
-      const d = require("electron").remote.dialog;
-
       try {
-        const result = await d.showOpenDialog({
+        const result = await dialog.showOpenDialog({
           properties: ["openFile", "multiSelections"],
           filters: [{ name: "All Files", extensions: ["*"] }],
         });
@@ -111,7 +110,7 @@ export class FileLinkModal extends Modal {
           this.displaySelectedFiles(this.filePaths);
         }
       } catch (error) {
-        new Notice("Error selecting files: " + error.message);
+        new Notice("Error selecting files: " + (error as Error).message);
       }
     });
 

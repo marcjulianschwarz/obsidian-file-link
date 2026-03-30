@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "module": "ESNext",
+    "target": "ES2022",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["ES2022", "DOM"],
+    "types": ["node"],
+  },
+  "include": ["main.ts", "src/**/*.ts", "tests/**/*.ts"],
+}

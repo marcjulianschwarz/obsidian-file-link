@@ -6,7 +6,7 @@ import { FileLinkSettingTab } from "./src/FileLinkSettingsTab";
 import { FileLinkModal } from "./src/FileLinkModal";
 
 export default class FileLink extends Plugin {
-  settings: FileLinkSettings;
+  settings: FileLinkSettings = DEFAULT_SETTINGS;
 
   async onload() {
     console.log("loading plugin file-link");
