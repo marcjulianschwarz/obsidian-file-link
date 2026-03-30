@@ -8,7 +8,8 @@
     "dev": "rollup --config rollup.config.js -w",
     "build": "rollup --config rollup.config.js --environment BUILD:production",
     "test": "vitest run",
-    "devbuild": "rollup --config rollup.config.js --environment BUILD:production && cp main.js manifest.json styles.css $HOME/Mac/GitHub/marcjulianschwarz/obsidian/obsidian-raycast-test/.obsidian/plugins/obsidian-file-link/"
+    "devbuild": "rollup --config rollup.config.js --environment BUILD:production && cp main.js manifest.json styles.css $HOME/Mac/GitHub/marcjulianschwarz/obsidian/obsidian-raycast-test/.obsidian/plugins/obsidian-file-link/",
+    "release": "yarn build && node -e \"const v = require('./manifest.json').version; require('child_process').execSync('gh release create ' + v + ' main.js manifest.json styles.css --title ' + v + ' --generate-notes', {stdio: 'inherit'})\""
   },
   "keywords": [],
   "author": "",
