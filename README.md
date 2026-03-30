@@ -11,6 +11,7 @@ An Obsidian plugin for adding external file links to your notes. No more manual 
 - Toggle file extensions visibility
 - Choose between opening files or their containing folders
 - Embed files directly in your notes
+- Detect broken file links across all your notes (command: "Check for broken file links")
 
 ## Supported File Types for Embedding
 
