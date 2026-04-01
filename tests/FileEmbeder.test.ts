@@ -51,6 +51,16 @@ describe("getMarkdownLink", () => {
     expect(link).toBe("[/home/user/docs](<file:////home/user/docs>)\n");
   });
 
+  it("uses folder name when useFolderName is true", () => {
+    const embeder = new FileEmbeder({
+      ...DEFAULT_SETTINGS,
+      linkFolder: true,
+      useFolderName: true,
+    });
+    const link = embeder.getMarkdownLink("/home/user/docs/report.pdf", false);
+    expect(link).toBe("[docs](<file:////home/user/docs>)\n");
+  });
+
   it("prepends prefix when printPrefix is true", () => {
     const embeder = new FileEmbeder({ ...DEFAULT_SETTINGS, linkPrefix: "-" });
     const link = embeder.getMarkdownLink("/home/user/docs/report.pdf", true);

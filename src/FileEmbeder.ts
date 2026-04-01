@@ -54,7 +54,9 @@ export class FileEmbeder {
     const prefix = printPrefix ? this.settings.linkPrefix : "";
     let linkText = pathInfo.name;
     if (this.settings.linkFolder) {
-      linkText = pathInfo.dir;
+      linkText = this.settings.useFolderName
+        ? path.basename(pathInfo.dir)
+        : pathInfo.dir;
     }
     if (this.settings.showFileEnding) {
       linkText = pathInfo.filename;

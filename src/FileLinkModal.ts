@@ -80,6 +80,12 @@ export class FileLinkModal extends Modal {
       this.plugin.settings.linkFolder,
     );
 
+    const checkboxFolderName = createCheckboxGroup(
+      "folder-name",
+      "Use folder name",
+      this.plugin.settings.useFolderName,
+    );
+
     const checkboxFileEnding = createCheckboxGroup(
       "file-ending",
       "Show file extension",
@@ -118,6 +124,7 @@ export class FileLinkModal extends Modal {
       if (this.filePaths.length > 0) {
         // Update settings
         this.plugin.settings.linkFolder = checkboxFileFolder.checked;
+        this.plugin.settings.useFolderName = checkboxFolderName.checked;
         this.plugin.settings.showFileEnding = checkboxFileEnding.checked;
         this.plugin.settings.embedFile = checkboxEmbed.checked;
 

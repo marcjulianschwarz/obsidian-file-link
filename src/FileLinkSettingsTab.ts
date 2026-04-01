@@ -60,5 +60,19 @@ export class FileLinkSettingTab extends PluginSettingTab {
           await this.plugin.saveSettings();
         }),
       );
+
+    new Setting(containerEl)
+      .setName("Use folder name")
+      .setDesc(
+        'When linking to a folder, show only the folder name instead of the full path (e.g. "baz" instead of "/Users/foo/bar/baz").',
+      )
+      .addToggle((toggle) =>
+        toggle
+          .setValue(this.plugin.settings.useFolderName)
+          .onChange(async () => {
+            this.plugin.settings.useFolderName = toggle.getValue();
+            await this.plugin.saveSettings();
+          }),
+      );
   }
 }

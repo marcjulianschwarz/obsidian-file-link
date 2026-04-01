@@ -4,6 +4,7 @@ export const DEFAULT_SETTINGS: FileLinkSettings = {
   linkPrefix: "",
   showFileEnding: false,
   linkFolder: false,
+  useFolderName: false,
   embedFile: false,
 };
 
