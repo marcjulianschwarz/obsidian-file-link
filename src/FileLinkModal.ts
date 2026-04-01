@@ -104,6 +104,13 @@ export class FileLinkModal extends Modal {
       cls: "mod-cta",
     });
 
+    contentEl.addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        submitButton.click();
+      }
+    });
+
     fileButton.addEventListener("click", async () => {
       try {
         const result = await dialog.showOpenDialog({
